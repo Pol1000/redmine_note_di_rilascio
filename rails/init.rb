@@ -64,10 +64,13 @@ Redmine::Plugin.register :redmine_note_di_rilascio do
          		response << estimates + ' ' 
          		response << "(#{h(issue.status)})"
 			end 
+      
 				j = issue.journals.find(:last, !:notes.nil?)
+        unless j.nil?
 				if !j.notes.nil?
 					response << "#{textilizable '> '+j.notes}"
-				end
+			end
+      end
 		end
   	  	
         response << '</span></div>'
